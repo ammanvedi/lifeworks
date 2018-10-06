@@ -1,11 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-
 import styles from './app.scss';
+
+import BalanceContainer from './container/BalanceContainer';
 
 class App extends React.Component {
   render() {
-    return <div className={styles.wrapper}>Hello World</div>
+    return <div className={styles.wrapper}>
+      <BalanceContainer />
+    </div>
   }
 }
 
