@@ -9,6 +9,8 @@ export default class BalanceDisplay extends React.Component {
     getDisplayBalance( balance ) {
 
         if ( typeof balance !== 'number' ) {
+            // when balance has not loaded we want to indicate this, but we dont want to put 0.00
+            // as this may scare the user!
             return '-.--';
         }
 

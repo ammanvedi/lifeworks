@@ -22,9 +22,16 @@ class BalanceContainer extends React.Component {
     }
 
     componentDidMount() {
+        // dispatch redux action to fetch balance data
         this.props.fetchBalance();
     }
 
+    /**
+     * Depending on the change in the balance get the string that should be shown in the transaction listing
+     * 
+     * @param {number} delta the change in the balance
+     * @return {string} the balance transaction explanation
+     */
     getTransactionMessage( delta ) {
 
         const currencyString = formatCurrency( Math.abs( delta ), this.props.currency );
@@ -39,6 +46,12 @@ class BalanceContainer extends React.Component {
         return `Initial amount`;
     }
 
+    /**
+     * Add a new transaction to the state
+     * 
+     * @param {number} newbalance the updated balance in the wallet
+     * @param {number} changeInBalance the amount the balance has been incremeneted or decremented y
+     */
     addBalanceTransaction( newBalance, changeInBalance ) {
 
         this.setState( state => {
@@ -52,6 +65,12 @@ class BalanceContainer extends React.Component {
         } );
     }
 
+    /**
+     * Apply a change in balance and return the new value in lowest denomination
+     * 
+     * @param {number} balanceDelta change in balance as a decimal
+     * @param {number} currentBalance current balance in lowest deonimation e.g. pence
+     */
     getNewBalance( balanceDelta, currentBalance ) {
         const changeInBalance = getLowestDenominationValue( balanceDelta );
         const newBalance = currentBalance + changeInBalance;
@@ -59,6 +78,12 @@ class BalanceContainer extends React.Component {
         return newBalance;
     }
 
+    /**
+     * Callback invoked by the child BalanceUpdaterContainer when the value of the input is valid
+     * and the user has clicked a button.
+     * 
+     * @param {number} balanceDelta change in balance as a decimal
+     */
     onValueUpdate( balanceDelta ) {
         const newBalance = this.getNewBalance( balanceDelta, this.props.balance );
 
