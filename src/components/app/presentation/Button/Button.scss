@@ -1,0 +1,20 @@
+@import '../../../../styles/colors';
+
+.button {
+    font-size: .875rem;
+    min-width: 6.25rem;
+    border-radius: 1.25rem;
+    color: $color-white;
+    padding: 10px 0;
+    margin: 0 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.button--red {
+    background-color: $color-red;
+}
+
+.button--blue {
+    background-color: $color-blue;
+}
