@@ -10,6 +10,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "autoprefixer": "^9.1.5",
+    "postcss-load-config": "^2.0.0",
+    "postcss-loader": "^3.0.0",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.0.7",
