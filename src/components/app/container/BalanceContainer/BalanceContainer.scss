@@ -1,0 +1,101 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/dimensions';
+
+@keyframes loader {
+    0% {
+        left: 40%;
+    }
+
+    100% {
+        left: 60%;
+    }
+}
+
+.balanceContainer {
+    display: block;
+    box-shadow: 0px 2px 12px 0px $color-box-shadow;
+    overflow: hidden;
+    border-radius: 4px;
+    max-height: calc( 100vh - 40px );
+    display: flex;
+    flex-direction: column;
+
+    &--loading {
+        position: relative;
+
+        .balanceContainer__content {
+            opacity: .1;
+            pointer-events: none;
+            
+        }
+
+        &::after {
+            animation-name: loader;
+            animation-duration: .2s;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            border-radius: 100%;
+            background-color: $color-blue;
+        }
+    }
+}
+
+.balanceContainer__content {
+    opacity: 1;
+    transition: .3s ease-out opacity;
+}
+
+.balanceContainer__top {
+    padding: 10px 50px 50px;
+    background-image: linear-gradient( to right, $color-blue-gradient-start, $color-blue-gradient-end );
+    flex: 0;
+}
+
+.balanceContainer__heading {
+    font-weight: 300;
+    font-size: 1.25rem;
+    margin: 0;
+    color: $color-white;
+}
+
+.balanceContainer__controls {
+    background-color: white;
+    border-radius: 8px;
+    padding: 40px 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@media( max-width: $break-tablet ) {
+
+    .balanceContainer {
+        max-height: 100vh;
+    }
+}
+
+// when the height is too small for a split view just allow the window to scroll
+@media( max-width: $break-tablet ) and ( max-height: 500px ) {
+    .balanceContainer {
+        max-height: none;
+    }
+}
+
+@media( max-width: $break-mobile ) {
+
+    .balanceContainer__top {
+        padding: 15px;
+    }
+
+    .balanceContainer__controls {
+        padding: 20px 10px;
+    }
+}
+
