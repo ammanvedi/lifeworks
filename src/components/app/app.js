@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './app.scss';
 
-import BalanceContainer from './container/BalanceContainer';
+import BalanceContainer from './container/BalanceContainer/BalanceContainer';
 
 class App extends React.Component {
   render() {

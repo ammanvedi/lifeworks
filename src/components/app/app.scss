@@ -1,5 +1,12 @@
-@import './../../styles/_colors';
+@import './../../styles/dimensions';
 
 .wrapper {
-  background: $color-grey;
+  max-width: $max-width;
+  margin: 20px auto;
+}
+
+@media( max-width: $break-tablet ) {
+  .wrapper {
+    margin: 0;
+  }
 }
