@@ -33,7 +33,7 @@ export function balanceReducer( state = DEFAULT_BALANCE_STATE, action ) {
                     ...state.data,
                     ...action.balanceData,
                     // store as lowest denomination to avoid issues with floats in js
-                    balance: action.balanceData.balance * 100
+                    balance: action.balanceData.balance
                 }
             }
         default:
