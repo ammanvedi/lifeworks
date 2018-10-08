@@ -1,5 +1,6 @@
 import { BALANCE_URL } from '../../constants';
 import { BalanceFetchError } from '../../error/balance-fetch-error';
+import { getLowestDenominationValue } from '../../util';
 
 /**
  * @typedef {Object} BalanceData
@@ -37,13 +38,20 @@ export function fetchBalanceSuccess( success = true ) {
 export function updateBalance( balanceData = {} ) {
     return {
         type: BALANCE_ACTIONS.UPDATE_BALANCE,
-        balanceData
+        balanceData: {
+            ...balanceData
+        }
     }
 }
 
 export function fetchBalance() {
 
-    return function( dispatch ) {
+    return function( dispatch, getState ) {
+
+        if ( getState().balance.fetching ) {
+            // we are already fetching this info, dont fetch again
+            return;
+        }
 
         dispatch( fetchingBalance( true ) );
 
@@ -56,7 +64,13 @@ export function fetchBalance() {
                 return response.json()
             } )
             .then( data => {
-                dispatch( updateBalance( data ) );
+                dispatch( updateBalance( {
+                    ...data,
+                    // data returned from api is in pounds and pence.
+                    // we dont want to be doing floating point math in JS 
+                    // so lets just deal with pence, cents etc
+                    balance: getLowestDenominationValue( data.balance )
+                } ) );
                 dispatch( fetchBalanceSuccess( true ) );
             } )
             .catch( err => {
