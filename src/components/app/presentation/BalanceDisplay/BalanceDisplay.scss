@@ -1,0 +1,25 @@
+@import '../../../../styles/colors';
+
+.balanceDisplay {
+    
+}
+
+.balanceDisplay__heading {
+    font-weight: 700;
+    margin: 0;
+    font-size: 1.75rem;
+}
+
+.balanceDisplay__message {
+    margin: 0;
+}
+.balanceDisplay__balance {
+    font-weight: 300;
+    font-size: 3.875rem;
+    line-height: 3.875rem;
+    margin: 0;
+
+    &--red {
+        color: $color-red;
+    }
+}
