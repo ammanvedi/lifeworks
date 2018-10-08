@@ -10,6 +10,12 @@ export default class BalanceUpdater extends React.Component {
             <div className={ styles.balanceUpdater } >
                 <input className={ `js-balance-input ${ styles.balanceUpdater__input }` }
                        type="number"
+                       role="spinbutton"
+                       aria-label="Input to update balance"
+                       aria-valuenow={ this.props.inputValue }
+                       aria-valuemax=""
+                       aria-valuemin="0"
+                       step="0.01"
                        value={ this.props.inputValue }
                        placeholder={ UI_STRINGS.UPDATE_PLACEHOLDER }
                        onChange={ this.props.numberChanged } />
