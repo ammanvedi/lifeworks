@@ -91,6 +91,11 @@
 
 @media( max-width: $break-mobile ) {
 
+    // viewport height on mobile is not consistent, just allow the window to scroll
+    .balanceContainer__content {
+        max-height: none;
+    }
+
     .balanceContainer__top {
         padding: 15px;
     }
