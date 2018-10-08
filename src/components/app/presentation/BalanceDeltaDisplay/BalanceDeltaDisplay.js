@@ -11,7 +11,7 @@ export default class BalanceDeltaDisplay extends React.Component {
                 <h2 className={ styles.balanceDeltaDisplay__heading } >{ UI_STRINGS.BALANCE_HISTORY }</h2>
                 <ul className={ styles.balanceDeltaDisplay__list } >
                     { this.props.deltas.map( ( delta, i ) => {
-                        return <li key={ i } className={ itemStyles.balanceDisplayItem } >
+                        return <li key={ i } className={ itemStyles.balanceDisplayItem } tabindex="0" >
                                     <span className={ `js-delta-title ${ itemStyles.balanceDisplayItem__title }` }>
                                         { delta.message }
                                     </span>
