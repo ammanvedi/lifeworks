@@ -1,0 +1,31 @@
+@import '../../../../styles/colors';
+
+.balanceUpdater {
+
+}
+
+.balanceUpdater__message {
+    display: block;
+    margin-bottom: 10px;
+    color: $color-red;
+}
+
+.balanceUpdater__input {
+    display: block;
+    margin: 0 auto;
+    min-width: 189px;
+    -webkit-appearance: none;
+    font-size: 1rem;
+    border: 1px solid rgba( $color-dark-grey, .2 );
+    border-radius: 20px;
+    padding: 10px;
+    margin-top: 25px;
+    margin-bottom: 14px;
+    text-align: center;
+    outline: none;
+    transition: .3s ease-out border-color;
+
+    &:focus {
+        border-color: $color-blue;
+    }
+}
