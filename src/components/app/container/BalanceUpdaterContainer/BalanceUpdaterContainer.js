@@ -28,11 +28,11 @@ export default class BalanceUpdaterContainer extends React.Component {
 
     numberChanged( changeEvent ) {
         let newValue = changeEvent.target.value;
-
-        if( !VALID_INPUT_REGEX.test( changeEvent.target.value ) || newValue === '0' ) {
+        let parsed = parseFloat( newValue );
+        if( !VALID_INPUT_REGEX.test( changeEvent.target.value ) || parsed === 0 ) {
             this.setValidity( false );
         } else {
-            newValue = parseFloat( newValue )
+            newValue = parsed;
             this.setValidity( true );
         }
 

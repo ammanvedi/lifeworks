@@ -13,9 +13,23 @@ describe('Balance Container', function() {
         container = shallow(<BalanceUpdaterContainer onValueUpdate={ onUpdate } />)
     } )
 
-    it( 'should not fire callback if number invalid', () => {
+    it( 'should not fire callback if number invalid - non zero', () => {
         const inputContainer = container.dive();
         inputContainer.find( '.js-balance-input' ).simulate('change', { target: { value: 0.001 } });
+        inputContainer.find( '.js-button-increment' ).simulate( 'click' );
+        expect( onUpdate.mock.calls.length ).toBe( 0 );
+    } );
+
+    it( 'should not fire callback if number invalid - 0.00', () => {
+        const inputContainer = container.dive();
+        inputContainer.find( '.js-balance-input' ).simulate('change', { target: { value: 0.00 } });
+        inputContainer.find( '.js-button-increment' ).simulate( 'click' );
+        expect( onUpdate.mock.calls.length ).toBe( 0 );
+    } );
+
+    it( 'should not fire callback if number invalid - 0', () => {
+        const inputContainer = container.dive();
+        inputContainer.find( '.js-balance-input' ).simulate('change', { target: { value: 0 } });
         inputContainer.find( '.js-button-increment' ).simulate( 'click' );
         expect( onUpdate.mock.calls.length ).toBe( 0 );
     } );
