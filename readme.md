@@ -30,10 +30,10 @@ Here is an architechtural diagram of my widget;
 
 I have used the presentation container pattern here, blue indicates a container component and grey indicates a presentation container. Here is a quick run down of the container component responsibilities;
 
-######BalanceContainer
+###### BalanceContainer
 This container handles fetching of the data via redux, updating the value stored in redux and maintaining a list of transactions.
 
-######BalanceUpdaterContainer
+###### BalanceUpdaterContainer
 This container maintains the state of the input element and performs input validation. It then invokes a callback on the BalanceContainer only when the input is ok for processing.
 
 ##### Considerations for Browser Support
