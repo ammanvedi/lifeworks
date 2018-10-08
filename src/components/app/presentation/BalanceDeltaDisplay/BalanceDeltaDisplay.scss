@@ -1,0 +1,41 @@
+@import '../../../../styles/colors';
+@import '../../../../styles/dimensions';
+
+.balanceDeltaDisplay {
+    padding: 10px 50px 40px;
+    background: $color-grey;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.balanceDeltaDisplay__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: 0px 2px 12px 0px $color-box-shadow;
+    background-color: $color-white;
+    border-radius: 8px;
+    padding: 15px 15px 15px;
+    margin-top: 10px;
+    overflow: scroll;
+    flex: 1;
+}
+
+.balanceDeltaDisplay__emptyMessage {
+    font-weight: 700;
+}
+
+.balanceDeltaDisplay__heading {
+    font-weight: 300;
+    font-size: 1.25rem;
+    margin: 0;
+    flex: 0;
+}
+
+@media( max-width: $break-mobile ) {
+
+    .balanceDeltaDisplay {
+        padding: 15px;
+    }
+}
